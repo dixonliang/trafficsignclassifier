@@ -19,11 +19,11 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./histogram.png "histogram"
-[image2]: ./60km.png "60km"
-[image3]: ./stop.jpg "stop"
-[image4]: ./nopassing.png "passing"
-[image5]: ./yield.png "yield"
-[image6]: ./roadowork.png "roadwork"
+[image2]: ./60km.png=32x32 "60km"
+[image3]: ./stop.jpg=32x32 "stop"
+[image4]: ./nopassing.png=32x32 "passing"
+[image5]: ./yield.png=32x32 "yield"
+[image6]: ./roadowork.png=32x32 "roadwork"
 
 
 Here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
@@ -99,8 +99,8 @@ Afterwards, I decided to look at the parameters that were used for the final imp
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image2 =32x32] ![alt text][image3 =32x32] ![alt text][image4 =32x32] 
-![alt text][image5 =32x32] ![alt text][image6 =32x32]
+![alt text][image2] ![alt text][image3] ![alt text][image4] 
+![alt text][image5] ![alt text][image6]
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -110,7 +110,7 @@ Here are the results of the prediction:
 |:---------------------:|:---------------------------------------------:| 
 | 60 km/h          		| End of speed limit 							|
 | Stop      			| Yield											|
-| No passing			| No passing									|
+| No passing			| Right of Way									|
 | Yield          		| Yield     					 				|
 | Road work 			| Road work          							|
 
@@ -121,58 +121,60 @@ The model was able to correctly guess 3 of the 5 traffic signs, which gives an a
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were: 
+
+For the first image (60 km/h) ... 
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| .96         			| End of speed limit   							| 
+| .04     				| Priority Road      							|
+| <.01					| Double curve 	    							|
+| <.01	      			| 80 km/h			     		 				|
+| <.01				    | Right of way                          		|
 
 
-For the second image ...
-
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
-
-For the third image ...
+For the second image (Stop) ...
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| .99         			| Yield     			  						| 
+| <.01     				| Road work 									|
+| <.01					| No vehicles      t							|
+| <.01	      			| Ahead only 					 				|
+| <.01				    | Priority road            	    				|
 
-
-For the fourth image ... 
-
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
-
-
-For the fifth image .. 
+For the third image (No passing) ...
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| .61         			| Right of way   								| 
+| .29     				| No passing  									|
+| .09					| Double curve									|
+| <.01	      			| Children crossing				 				|
+| <.01				    | Slipper road      							|
+
+
+For the fourth image (Yield) ... 
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .99         			| Yield   			     			  			| 
+| <.01     				| Ahead only 									|
+| <.01					| Turn left ahead								|
+| <.01	      			| 50 km/h   					 				|
+| <.01				    | Go straight or left       					|
+
+
+For the fifth image (Road work) ... 
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .84         			| Road work   									| 
+| .10     				| Keep right 									|
+| .05					| Dangerous curve to right						|
+| <.01	      			| Turn left ahead				 				|
+| <.01				    | 80 km/h           							|
 
 
 
