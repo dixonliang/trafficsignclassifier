@@ -99,10 +99,10 @@ Afterwards, I decided to look at the parameters that were used for the final imp
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image2] ![alt text][image4] 
+![alt text][image4] 
 ![alt text][image5] ![alt text][image6]
 
-<img src="./60km.png" style="width:100px;height:50px"/>
+<img src="./60km.png" style="width:100px;height:100px"/> <img src="stop.jpg" style="width:100px;height:100px"/>
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
