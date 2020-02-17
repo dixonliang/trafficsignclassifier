@@ -20,13 +20,13 @@ The goals / steps of this project are the following:
 
 [image1]: ./histogram.png "histogram"
 [image2]: <img src="./60km.png" width="50" height="50";>
-[image3]: ./stop.jpg "stop"
+[image3]: <img src="./stop.jpg" width="50" height="50";>
 [image4]: ./nopassing.png "passing"
 [image5]: ./yield.png "yield"
 [image6]: ./roadwork.png "roadwork"
 
 
-Here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+Here is a link to my [project code](https://github.com/dixonliang/trafficsignclassifier)
 
 ### Data Set Summary & Exploration
 
