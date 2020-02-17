@@ -19,11 +19,11 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./histogram.png "histogram"
-[image2]: ./60km.png=32x32 "60km"
-[image3]: ./stop.jpg=32x32 "stop"
-[image4]: ./nopassing.png=32x32 "passing"
-[image5]: ./yield.png=32x32 "yield"
-[image6]: ./roadowork.png=32x32 "roadwork"
+[image2]: <img src="./60km.png" width="50" height="50";>
+[image3]: ./stop.jpg "stop"
+[image4]: ./nopassing.png "passing"
+[image5]: ./yield.png "yield"
+[image6]: ./roadowork.png "roadwork"
 
 
 Here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
@@ -49,7 +49,7 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 ### Design and Test a Model Architecture
 
-#### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+#### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. 
 
 As a first step, I decided to normalize the images because we want to well condition the data so that the mean and variance are standarized. This way, the optimizer can proceed more efficiently. Then, I convereted each image to grayscale for a similar reason as the colors in this case are not relevant in object idenfication. After converting the images to grayscale, our input shape is now 32x32x1. 
 
@@ -99,7 +99,7 @@ Afterwards, I decided to look at the parameters that were used for the final imp
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image2] ![alt text][image3] ![alt text][image4] 
+<img src="./stop.jpg" width="50" height="50";> ![alt text][image3] ![alt text][image4] 
 ![alt text][image5] ![alt text][image6]
 
 #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
@@ -118,7 +118,7 @@ Here are the results of the prediction:
 The model was able to correctly guess 3 of the 5 traffic signs, which gives an accuracy of 60%. This compares unfavorably to the data set that was provided which was getting accuracy of >0.93 on the validation set. 
 
 
-#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+#### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. 
 
 
 For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were: 
@@ -140,7 +140,7 @@ For the second image (Stop) ...
 |:---------------------:|:---------------------------------------------:| 
 | .99         			| Yield     			  						| 
 | <.01     				| Road work 									|
-| <.01					| No vehicles      t							|
+| <.01					| No vehicles       							|
 | <.01	      			| Ahead only 					 				|
 | <.01				    | Priority road            	    				|
 
