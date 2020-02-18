@@ -84,13 +84,16 @@ To train the model, I used an epochs of 15 and batch size of 128. The optimizer 
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
 My final model results were:
-* training set accuracy of ~0.99
+* training set accuracy of ~0.95
 * validation set accuracy of >0.93.  
-* test set accuracy of ~0.98
+* test set accuracy of ~0.58
 
 The first architecture that was used was the default LeNet model with a learning rate of 0.001, epochs of 10, and batch size 128. Initially, the first few runs, I was getting a validation set accuracy of ~0.89. The first thing I decided to do was to add a dropout layer just before the fully connected run as I noticed the training and training sets were higher than the validaiton set accuracy which implied some over-fitting on the training data. After deciding to do this initially with a keep probability of 0.5, I noticed that I was actually getting worse results if the probability was too low. With a keep probability too high, there wasn't much difference from not having the dropout layer at all. After testing several values, I noticed that 0.6 seemed to improve the model by 1-2%. 
 
 Afterwards, I decided to look at the parameters that were used for the final improvement. The first thing I looked at was the number of epochs to see if any more improvement could be given if we just went through the networks more times to train it more. Adding 5 more pass throughs seemed to improve the model by another 1-2% which passed me through the threshold of 0.93 averaging anywhere between ~0.93 and ~0.95 validation accuracy. 
+
+Against the test set, the model performance deteriorated to an accuracy of about 0.58. Against the training set, the accuracy was ~0.95. 
+
 
 
 ### Test a Model on New Images
@@ -104,36 +107,35 @@ Here are five German traffic signs that I found on the web:
 
 <img src="./60km.png"/> <img src="./stop.jpg" alt="alt text" width=200 height=200>
 
-#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+#### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set 
 
 Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| 60 km/h          		| End of speed limit 							|
+| 60 km/h          		| Right of Way      							|
 | Stop      			| Yield											|
 | No passing			| Right of Way									|
 | Yield          		| Yield     					 				|
-| Road work 			| Road work          							|
+| Road work 			| Keep right           							|
 
 
-The model was able to correctly guess 3 of the 5 traffic signs, which gives an accuracy of 60%. This compares unfavorably to the data set that was provided which was getting accuracy of >0.93 on the validation set. 
+The model was able to correctly guess 1 of the 5 traffic signs, which gives an accuracy of 60%. This compares unfavorably to the data set that was provided which was getting accuracy of >0.93 on the validation set and ~0.58 against the test set. Possible reasons for the worse performance are that the images were not all standarized when taken so had differences in characteristics such as image quality. For 4 of the signs, the correct classification was at least included in the top 5 probabilities.
 
 
 #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. 
 
-
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were: 
+The top five soft max probabilities were: 
 
 For the first image (60 km/h) ... 
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .96         			| End of speed limit   							| 
-| .04     				| Priority Road      							|
+| .71         			| Right of Way   		     					| 
+| .29     				| End of Speed Limit  							|
 | <.01					| Double curve 	    							|
-| <.01	      			| 80 km/h			     		 				|
-| <.01				    | Right of way                          		|
+| <.01	      			| 80 km/h	 		     		 				|
+| <.01				    | 60 km/h                               		|
 
 
 For the second image (Stop) ...
@@ -142,19 +144,19 @@ For the second image (Stop) ...
 |:---------------------:|:---------------------------------------------:| 
 | .99         			| Yield     			  						| 
 | <.01     				| Road work 									|
-| <.01					| No vehicles       							|
-| <.01	      			| Ahead only 					 				|
-| <.01				    | Priority road            	    				|
+| <.01					| Priority road       							|
+| <.01	      			| Stop      					 				|
+| <.01				    | Go straight or right            				|
 
 For the third image (No passing) ...
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .61         			| Right of way   								| 
-| .29     				| No passing  									|
-| .09					| Double curve									|
-| <.01	      			| Children crossing				 				|
-| <.01				    | Slipper road      							|
+| .89         			| Right of way   								| 
+| .09     				| Vechicles over 3.5 prohibited 				|
+| .01					| No passing 									|
+| <.01	      			| Slippery road  				 				|
+| <.01				    | Dangerous curve to right 						|
 
 
 For the fourth image (Yield) ... 
@@ -163,20 +165,22 @@ For the fourth image (Yield) ...
 |:---------------------:|:---------------------------------------------:| 
 | .99         			| Yield   			     			  			| 
 | <.01     				| Ahead only 									|
-| <.01					| Turn left ahead								|
-| <.01	      			| 50 km/h   					 				|
-| <.01				    | Go straight or left       					|
+| <.01					| 50 km/h        								|
+| <.01	      			| 30 km/h   					 				|
+| <.01				    | Turn left ahead           					|
 
 
 For the fifth image (Road work) ... 
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .84         			| Road work   									| 
-| .10     				| Keep right 									|
-| .05					| Dangerous curve to right						|
-| <.01	      			| Turn left ahead				 				|
-| <.01				    | 80 km/h           							|
+| .93         			| Keep right   									| 
+| .05     				| Slippery Road 								|
+| .02					| 80 km/h                 						|
+| <.01	      			| Go straight or right		     				|
+| <.01				    | 60 km/h           							|
+
+
 
 
 
